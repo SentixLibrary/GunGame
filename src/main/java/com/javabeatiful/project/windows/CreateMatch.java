@@ -11,6 +11,8 @@ import cn.nukkit.event.player.PlayerFormRespondedEvent;
 import cn.nukkit.form.element.ElementInput;
 import cn.nukkit.form.window.FormWindowCustom;
 import cn.nukkit.utils.Config;
+import cn.nukkit.utils.TextFormat;
+
 import com.javabeatiful.project.windows.Window;
 
 public class CreateMatch extends FormWindowCustom implements Window{
@@ -29,7 +31,7 @@ public class CreateMatch extends FormWindowCustom implements Window{
 			return;
 		} else {
 			if (new File(Main.getInstance().getDataFolder() + "/arena/" + arenaName + ".json").exists()) {
-				player.sendMessage("Arena already exists!");
+				player.sendMessage(Main.prefix + TextFormat.GREEN + "Arena successful created");
 				return;
 			} else {
 				Config arenaJson = new Config(
@@ -48,7 +50,7 @@ public class CreateMatch extends FormWindowCustom implements Window{
 
 				});
 				arenaJson.save();
-                player.sendMessage("Arena " + arenaName + "created at Level: " + worldName);
+                player.sendMessage(Main.prefix +TextFormat.GREEN + "Arena " + arenaName + "created at Level: " + worldName);
                 Main.uiOpen.put(player.getUniqueId(), false);
 			}
 		}

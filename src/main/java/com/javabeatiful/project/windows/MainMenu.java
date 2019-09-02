@@ -7,20 +7,22 @@ import cn.nukkit.form.element.ElementButton;
 import cn.nukkit.form.window.FormWindowSimple;
 import com.javabeatiful.project.windows.MatchList;
 import com.javabeatiful.project.windows.Window;
+import com.javabeatiful.project.windows.DeleteArenaMenu;
 import com.javabeatiful.project.windows.CreateMatch;
 
-public class MainMenu extends FormWindowSimple implements Window{
+public class MainMenu extends FormWindowSimple implements Window {
 
 	public MainMenu(Player player) {
 		super("GunGame - Main", "GunGame Options");
 
 		addButton(new ElementButton("Join"));
 		addButton(new ElementButton("Stats"));
-		
-		if(player.hasPermission("gungame.create") || player.isOp()){
-		addButton(new ElementButton("Create a Match"));
+
+		if (player.hasPermission("gungame.create") || player.isOp()) {
+			addButton(new ElementButton("Create a Match"));
+			addButton(new ElementButton("Delete a Arena"));
 		}
-		
+
 	}
 
 	public void onRespone(PlayerFormRespondedEvent event) {
@@ -31,11 +33,16 @@ public class MainMenu extends FormWindowSimple implements Window{
 
 		if (hoverButton == 0) {
 			player.showFormWindow(new MatchList());
-		} else if(hoverButton == 2){
-			if(player.hasPermission("gungame.create") || player.isOp()){
-			player.showFormWindow(new CreateMatch());            }
-		} else if(hoverButton == 1){
+		} else if (hoverButton == 2) {
+			if (player.hasPermission("gungame.create") || player.isOp()) {
+				player.showFormWindow(new CreateMatch());
+			}
+		} else if (hoverButton == 1) {
 			player.showFormWindow(new StatsMenu(player));
+		} else if (hoverButton == 3) {
+			if (player.hasPermission("gungame.create") || player.isOp()) {
+				player.showFormWindow(new DeleteArenaMenu());
+			}
 		}
 	}
 

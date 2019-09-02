@@ -20,6 +20,7 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerFormRespondedEvent;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
+import cn.nukkit.utils.TextFormat;
 
 public class Main extends PluginBase implements Listener {
 
@@ -32,7 +33,9 @@ public class Main extends PluginBase implements Listener {
 	public static ArrayList<UUID> firstdead = new ArrayList<>();
 
 	public static Main plugin;
-
+    
+    public static String prefix = TextFormat.GOLD + "GunGame " + TextFormat.GRAY + "| " + TextFormat.RESET;
+    
 	public void onEnable() {
 
 		plugin = this;

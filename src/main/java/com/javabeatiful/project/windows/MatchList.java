@@ -15,6 +15,7 @@ import cn.nukkit.form.window.FormWindowSimple;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.Level;
 import cn.nukkit.utils.Config;
+import cn.nukkit.utils.TextFormat;
 
 public class MatchList extends FormWindowSimple implements Window {
 
@@ -54,6 +55,8 @@ public class MatchList extends FormWindowSimple implements Window {
 		}
 		
 		player.teleport(world.getSafeSpawn());
+		
+		player.sendMessage(Main.prefix + TextFormat.GREEN + "Welcome in GunGame");
 		
 		player.getInventory().clearAll();
 
