@@ -29,7 +29,8 @@ public class DeathKillListener implements Listener {
 		Player player = listener.getEntity();
 		if (Main.maps.contains(player.getLevel().getName())) {
 			Config playerConfig = new Config(Main.getInstance().getDataFolder() + "/users/" + player.getName() + ".json");
-			playerConfig.set("Deaths", playerConfig.getInt("Deaths") + 1);
+			int dnew = playerConfig.getInt("Deaths") + 1;
+			playerConfig.set("Deaths", dnew);
 			playerConfig.save();
 
 			if(Main.firstdead.contains(player.getUniqueId())){
@@ -52,7 +53,8 @@ public class DeathKillListener implements Listener {
 				Entity causeev = ((EntityDamageByEntityEvent) causer).getDamager();
 				Player causerPlayer = (Player) causeev;
 				Config playerC = new Config(Main.getInstance().getDataFolder() + "/users/" + causerPlayer.getName() + ".json");
-				playerC.set("Kills", playerConfig.getInt("Kills") + 1);
+				int knew = playerConfig.getInt("Kills") + 1;
+				playerC.set("Kills", knew);
 				playerC.save();
 				causerPlayer.sendMessage(TextFormat.GOLD + "GunGame | " + TextFormat.GREEN + "You killed " + player.getName());
 

@@ -20,7 +20,11 @@ public class StatsMenu extends FormWindowCustom implements Window {
 		
 		addElement(new ElementLabel(TextFormat.RED + "Deaths: " + playerConfig.getInt("Deaths")));
 		
-		double kd = playerConfig.getInt("Kills") / playerConfig.getInt("Deaths");
+		// Experimental-
+		
+		int k = playerConfig.getInt("Kills");
+		int d = playerConfig.getInt("Deaths");
+		double kd = (double)k/(double)d;
 		
 		addElement(new ElementLabel(TextFormat.LIGHT_PURPLE + "K/D | " + TextFormat.GOLD + kd));
 		
